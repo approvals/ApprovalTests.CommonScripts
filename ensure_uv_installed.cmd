@@ -7,3 +7,6 @@ if ERRORLEVEL 1 (
     set "PsModulePath="
     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" || goto :ERROR
 )
+
+    :ERROR
+cmd.exe /c exit /b %ERRORLEVEL%
