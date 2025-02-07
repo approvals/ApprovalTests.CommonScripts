@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+set -x
+
+# should not have uv installed yet
+command -v uv && (echo "delete ~/.local before running this test" && exit 1)
+
+# call ensure_uv_installed and check if it downloads uv
+./ensure_uv_installed.sh 2>&1 | grep '^downloading uv' || exit 1
+
+export PATH="$HOME/.local/bin:$PATH"
+command -v uv || exit 1
+
+# should not install uv again - no sign of `downloading uv`
+./ensure_uv_installed.sh 2>&1 | grep -v '^downloading uv' || exit 1
+
