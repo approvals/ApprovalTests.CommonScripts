@@ -30,7 +30,7 @@ def test__canary():
         b = sandbox / "b"
         a.write_text("a contents!")
         b.write_text("b contents!")
-        (sandbox / ".approvals_temp/.failed_comparison.log").write_text("a->b")
+        (sandbox / ".approvals_temp/.failed_comparison.log").write_text("a -> b")
 
         execute_the_script(cwd=sandbox)
 
