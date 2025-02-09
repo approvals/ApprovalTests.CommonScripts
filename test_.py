@@ -14,7 +14,6 @@ def execute_the_script(cwd: pathlib.Path):
         [
             sys.executable,
             "approve_all.py",
-            "--dry-run",
         ],
         cwd=cwd,
         text=True,

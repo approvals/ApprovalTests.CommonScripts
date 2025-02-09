@@ -3,6 +3,7 @@ TODO:
 - [ ] write an ADR
 - [x] record the UX design
 - [ ] how do we publish?
+- [ ] --dry-run / -n flag
 
 instructions given to user:
 """
