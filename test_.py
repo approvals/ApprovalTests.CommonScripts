@@ -33,6 +33,6 @@ def test__canary():
 
         execute_the_script(cwd=sandbox)
 
-        a_contents = a.read_text()
         b_contents = b.read_text()
-    assert b_contents == a_contents
+    assert b_contents == "a contents"
+    assert not a.exists()
