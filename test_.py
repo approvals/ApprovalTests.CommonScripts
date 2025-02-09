@@ -36,3 +36,31 @@ def test__end_to_end_test():
         b_contents = b.read_text()
     assert b_contents == "a contents"
     assert not a.exists()
+
+
+def approve_all(failed_comparison_loader = None, mover = None):
+    if failed_comparison_loader is None:
+        failed_comparison_loader = lambda: pathlib.Path(".approvals_temp/.failed_comparison.log").read_text().splitlines()
+    if mover is None:
+        mover = lambda a, b: pathlib.Path(a).replace(b)
+
+    for line in failed_comparison_loader():
+        a, b = line.split(" -> ")
+        mover(a, b)
+
+
+
+def test__approve_all__with_loader_and_saver():
+    def failed_comparison_loader():
+        return ["a.received.txt -> a.approved.txt",
+                "b.received.txt -> b.approved.txt",]
+
+    moves = []
+
+    def mover(a, b):
+        nonlocal moves
+        moves.append( f"{a} -> {b}")
+
+    approve_all(failed_comparison_loader, mover)
+
+    assert moves == failed_comparison_loader()
