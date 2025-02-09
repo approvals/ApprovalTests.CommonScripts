@@ -14,14 +14,15 @@ def execute_the_script(param):
 
 def test__canary():
     with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as sandbox:
-        pathlib.Path(sandbox, "a").write_text("a contents!")
-        pathlib.Path(sandbox, "b").write_text("b contents!")
+        a = pathlib.Path(sandbox, "a")
+        b = pathlib.Path(sandbox, "b")
+        a.write_text("a contents!")
+        b.write_text("b contents!")
         pathlib.Path(sandbox, "example_failed_comparison.log").write_text("a->b")
 
         execute_the_script("example_failed_comparison.log")
 
-        # compare the first file to the second file
-        a_contents = pathlib.Path(sandbox, "a").read_text()
-        b_contents = pathlib.Path(sandbox, "b").read_text()
+        a_contents = a.read_text()
+        b_contents = b.read_text()
     assert b_contents == a_contents
 
