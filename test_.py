@@ -37,13 +37,14 @@ def test__end_to_end_test():
     assert b_contents == "a contents"
     assert not a.exists()
 
+def load_failed_comparisons():
+    return pathlib.Path(".approvals_temp/.failed_comparison.log").read_text().splitlines()
 
-def approve_all(failed_comparison_loader = None, mover = None):
-    if failed_comparison_loader is None:
-        failed_comparison_loader = lambda: pathlib.Path(".approvals_temp/.failed_comparison.log").read_text().splitlines()
-    if mover is None:
-        mover = lambda a, b: pathlib.Path(a).replace(b)
+def move(a, b):
+    pathlib.Path(a).replace(b)
 
+
+def approve_all(failed_comparison_loader = load_failed_comparisons, mover = move):
     for line in failed_comparison_loader():
         a, b = line.split(" -> ")
         mover(a, b)
