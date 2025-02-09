@@ -2,6 +2,7 @@ import pathlib
 import subprocess
 import sys
 import tempfile
+from typing import Callable
 
 
 # Not really a test, but a way to ensure that the tests are actually running in CI and didn't get skipped silently
@@ -37,14 +38,13 @@ def test__end_to_end_test():
     assert b_contents == "a contents"
     assert not a.exists()
 
-def load_failed_comparisons():
-    return pathlib.Path(".approvals_temp/.failed_comparison.log").read_text().splitlines()
+def load_failed_comparisons() -> list[str]:
+    return pathlib.Path("./.failed_comparison.log").read_text().splitlines()
 
-def move(a, b):
+def move(a: str, b: str) -> None:
     pathlib.Path(a).replace(b)
 
-
-def approve_all(failed_comparison_loader = load_failed_comparisons, mover = move):
+def approve_all(failed_comparison_loader: Callable[[],list[str]] = load_failed_comparisons, mover: Callable[[str,str], None] = move) -> None:
     for line in failed_comparison_loader():
         a, b = line.split(" -> ")
         mover(a, b)
