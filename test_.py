@@ -21,7 +21,7 @@ def execute_the_script(cwd: pathlib.Path):
     )
 
 
-def test__canary():
+def test__end_to_end_test():
     with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as _sandbox:
         sandbox = pathlib.Path(_sandbox)
 
