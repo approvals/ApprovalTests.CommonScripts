@@ -10,15 +10,15 @@ def test__ensure_tests_are_actually_running():
 def execute_the_script(param):
     pass
 
-
-
 def test__canary():
-    with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as sandbox:
-        a = pathlib.Path(sandbox, "a")
-        b = pathlib.Path(sandbox, "b")
+    with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as _sandbox:
+        sandbox = pathlib.Path(_sandbox)
+
+        a = sandbox / "a"
+        b = sandbox / "b"
         a.write_text("a contents!")
         b.write_text("b contents!")
-        pathlib.Path(sandbox, "example_failed_comparison.log").write_text("a->b")
+        (sandbox / "example_failed_comparison.log").write_text("a->b")
 
         execute_the_script("example_failed_comparison.log")
 
