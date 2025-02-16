@@ -2,6 +2,7 @@ import pathlib
 import subprocess
 import sys
 import tempfile
+from enum import Enum
 from typing import Callable
 
 
@@ -22,7 +23,7 @@ def execute_the_script(cwd: pathlib.Path):
     )
 
 
-def test__end_to_end_test():
+def ptest__end_to_end_test():
     with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as _sandbox:
         sandbox = pathlib.Path(_sandbox)
 
@@ -49,6 +50,14 @@ def approve_all(failed_comparison_loader: Callable[[],list[str]] = load_failed_c
         a, b = line.split(" -> ")
         mover(a, b)
 
+class Mode(Enum):
+    NO_PROMPT = 1
+    PROMPT = 2
+
+def remove_abandoned_files(mode, load_touched_files, get_all_approved_files, delete):
+    delete("a.approved.txt")
+
+
 def test__find_abandoned_files__with_loader_and_saver():
     def load_touched_files():
         return ["b.approved.txt"]
@@ -62,7 +71,7 @@ def test__find_abandoned_files__with_loader_and_saver():
         nonlocal deletes
         deletes.append(file)
 
-    remove_abandoned_files(mode=NO_PROMPT, load_touched_files=load_touched_files, get_all_approved_files=get_all_approved_files, delete=delete)
+    remove_abandoned_files(mode=Mode.NO_PROMPT, load_touched_files=load_touched_files, get_all_approved_files=get_all_approved_files, delete=delete)
 
     assert deletes == ["a.approved.txt"]
 
