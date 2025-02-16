@@ -2,7 +2,8 @@ import pathlib
 import subprocess
 import sys
 import tempfile
-from typing import Callable
+
+from approve_all import approve_all
 
 
 def execute_the_script(cwd: pathlib.Path):
@@ -32,20 +33,6 @@ def ptest__end_to_end_test():
         b_contents = b.read_text()
     assert b_contents == "a contents"
     assert not a.exists()
-
-
-def load_failed_comparisons() -> list[str]:
-    return pathlib.Path("./.failed_comparison.log").read_text().splitlines()
-
-
-def move(a: str, b: str) -> None:
-    pathlib.Path(a).replace(b)
-
-
-def approve_all(failed_comparison_loader: Callable[[],list[str]] = load_failed_comparisons, mover: Callable[[str,str], None] = move) -> None:
-    for line in failed_comparison_loader():
-        a, b = line.split(" -> ")
-        mover(a, b)
 
 
 def test__approve_all__with_loader_and_saver():
