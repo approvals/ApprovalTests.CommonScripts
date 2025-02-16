@@ -10,7 +10,7 @@ def execute_the_script(cwd: pathlib.Path):
     subprocess.run(
         [
             sys.executable,
-            "approve_all.py",
+            ".approvals_temp/approve_all.py",
         ],
         cwd=cwd,
         text=True,
@@ -18,7 +18,7 @@ def execute_the_script(cwd: pathlib.Path):
     )
 
 
-def ptest__end_to_end_test():
+def test__end_to_end_test():
     with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as _sandbox:
         sandbox = pathlib.Path(_sandbox)
 
@@ -26,12 +26,15 @@ def ptest__end_to_end_test():
         b = sandbox / "b"
         a.write_text("a contents!")
         b.write_text("b contents!")
+        (sandbox / ".approvals_temp").mkdir()
         (sandbox / ".approvals_temp/.failed_comparison.log").write_text("a -> b")
+        (sandbox / ".approvals_temp/approve_all.py").write_text(pathlib.Path("approve_all.py").read_text())
 
         execute_the_script(cwd=sandbox)
 
         b_contents = b.read_text()
-    assert b_contents == "a contents"
+
+    assert b_contents == "a contents!"
     assert not a.exists()
 
 
