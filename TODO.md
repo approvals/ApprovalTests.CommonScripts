@@ -3,6 +3,8 @@ TODO:
 - [ ] write an ADR
 - [x] record the UX design
 - [ ] how do we publish?
+- [ ] --dry-run / -n flag
+- [ ] break in to unit tests / use loader
 
 instructions given to user:
 """
