@@ -20,18 +20,25 @@ def execute_the_script(script: pathlib.Path):
 
 
 def test__end_to_end_test():
+
+    script =".approval_tests_temp/approve_all.py"
     with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as _sandbox:
-        shutil.copytree(pathlib.Path("template_folder"), _sandbox, dirs_exist_ok=True)
-        sandbox = pathlib.Path(_sandbox)
-        render_template(sandbox, ".approval_tests_temp/.failed_comparison.log.template")
-        script = sandbox / ".approval_tests_temp/approve_all.py"
-        shutil.copy(script.name, script)
+        sandbox = copy_template_dir(_sandbox, script)
 
         received_text = (sandbox / "a.received.txt").read_text()
-        execute_the_script(script)
+        execute_the_script(sandbox / script)
         approved_text = (sandbox / "a.approved.txt").read_text()
+        assert received_text == approved_text
 
-    assert received_text == approved_text
+
+
+def copy_template_dir(_sandbox, script):
+    shutil.copytree(pathlib.Path("template_folder"), _sandbox, dirs_exist_ok=True)
+    sandbox = pathlib.Path(_sandbox)
+    render_template(sandbox, ".approval_tests_temp/.failed_comparison.log.template")
+    script_path = sandbox / script
+    shutil.copy(script_path.name, script_path)
+    return sandbox
 
 
 def render_template(root_dir, template_path):
