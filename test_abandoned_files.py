@@ -14,6 +14,11 @@ def test__find_abandoned_files__with_loader_and_saver():
         nonlocal deletes
         deletes.append(file)
 
-    remove_abandoned_files(mode=Mode.NO_PROMPT, load_touched_files=load_touched_files, get_all_approved_files=get_all_approved_files, delete=delete)
+    remove_abandoned_files(
+        mode=Mode.NO_PROMPT,
+        load_touched_files=load_touched_files,
+        get_all_approved_files=get_all_approved_files,
+        delete=delete,
+    )
 
     assert deletes == ["a.approved.txt"]

@@ -28,7 +28,9 @@ def test__end_to_end_test():
         b.write_text("b contents!")
         (sandbox / ".approvals_temp").mkdir()
         (sandbox / ".approvals_temp/.failed_comparison.log").write_text("a -> b")
-        (sandbox / ".approvals_temp/approve_all.py").write_text(pathlib.Path("approve_all.py").read_text())
+        (sandbox / ".approvals_temp/approve_all.py").write_text(
+            pathlib.Path("approve_all.py").read_text()
+        )
 
         execute_the_script(cwd=sandbox)
 
@@ -40,14 +42,16 @@ def test__end_to_end_test():
 
 def test__approve_all__with_loader_and_saver():
     def failed_comparison_loader():
-        return ["a.received.txt -> a.approved.txt",
-                "b.received.txt -> b.approved.txt",]
+        return [
+            "a.received.txt -> a.approved.txt",
+            "b.received.txt -> b.approved.txt",
+        ]
 
     moves = []
 
     def mover(a, b):
         nonlocal moves
-        moves.append( f"{a} -> {b}")
+        moves.append(f"{a} -> {b}")
 
     approve_all(failed_comparison_loader, mover)
 
