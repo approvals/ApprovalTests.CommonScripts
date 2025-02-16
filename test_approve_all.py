@@ -1,3 +1,4 @@
+import os
 import pathlib
 import subprocess
 import sys
@@ -10,7 +11,7 @@ def execute_the_script(cwd: pathlib.Path):
     subprocess.run(
         [
             sys.executable,
-            ".approvals_temp/approve_all.py",
+            ".approval_tests_temp/approve_all.py",
         ],
         cwd=cwd,
         text=True,
@@ -20,24 +21,37 @@ def execute_the_script(cwd: pathlib.Path):
 
 def test__end_to_end_test():
     with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as _sandbox:
-        sandbox = pathlib.Path(_sandbox)
+        template_folder = pathlib.Path("template_folder")
+        import shutil
+        shutil.copytree(template_folder, _sandbox, dirs_exist_ok=True)
 
-        a = sandbox / "a"
-        b = sandbox / "b"
-        a.write_text("a contents!")
-        b.write_text("b contents!")
-        (sandbox / ".approvals_temp").mkdir()
-        (sandbox / ".approvals_temp/.failed_comparison.log").write_text("a -> b")
-        (sandbox / ".approvals_temp/approve_all.py").write_text(
+        sandbox = pathlib.Path(_sandbox)
+        a = sandbox / "a.received.txt"
+        received_text = a.read_text()
+        # copy sandef copy_and_replace_template(sandbox: pathlib.Path):
+        template_path = sandbox / ".approval_tests_temp/.failed_comparison.log.template"
+        log_path = sandbox / ".approval_tests_temp/.failed_comparison.log"
+
+        # Read the template content
+        content = template_path.read_text()
+
+        # Replace {root} with the full path of the sandbox
+        print(f"{content=}")
+        content = content.replace("{root}", str(sandbox) + os.sep)
+        print(f"{content=}")
+
+        # Write the modified content to the log file
+        log_path.write_text(content)
+
+        (sandbox / ".approval_tests_temp/approve_all.py").write_text(
             pathlib.Path("approve_all.py").read_text()
         )
 
         execute_the_script(cwd=sandbox)
 
-        b_contents = b.read_text()
+        approved_text = (sandbox / "a.approved.txt").read_text()
 
-    assert b_contents == "a contents!"
-    assert not a.exists()
+    assert received_text == approved_text
 
 
 def test__approve_all__with_loader_and_saver():
