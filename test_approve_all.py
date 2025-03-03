@@ -50,8 +50,7 @@ def render_template(root_dir, template_path):
 
 
 def test__approve_all__with_loader_and_saver():
-    def failed_comparison_loader():
-        return [
+    failed_comparisons = [
             "a.received.txt -> a.approved.txt",
             "b.received.txt -> b.approved.txt",
         ]
@@ -62,6 +61,6 @@ def test__approve_all__with_loader_and_saver():
         nonlocal moves
         moves.append(f"{a} -> {b}")
 
-    approve_all(failed_comparison_loader, mover)
+    approve_all(failed_comparisons, mover)
 
-    assert moves == failed_comparison_loader()
+    assert moves == failed_comparisons

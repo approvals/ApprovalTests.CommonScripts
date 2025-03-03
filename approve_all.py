@@ -15,13 +15,13 @@ def move(a: str, b: str) -> None:
 
 
 def approve_all(
-    failed_comparison_loader: Callable[[], list[str]] = load_failed_comparisons,
+    failed_comparisons: list[str],
     mover: Callable[[str, str], None] = move,
 ) -> None:
-    for line in failed_comparison_loader():
+    for line in failed_comparisons:
         a, b = line.split(" -> ")
         mover(a, b)
 
 
 if __name__ == "__main__":
-    approve_all()
+    approve_all(load_failed_comparisons())
