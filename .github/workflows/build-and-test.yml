@@ -15,7 +15,18 @@ jobs:
           - macos-latest
           - ubuntu-latest
           - windows-latest
+        python-version:
+          # - 3.8 # doesn't support `list[...]` as a type hint
+          - 3.9
+          - 3.10
+          - 3.11
+          - 3.12
+          - 3.13
     steps:
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
       - uses: actions/checkout@v4
       - name: Build and test
         run: |
