@@ -65,3 +65,23 @@ def test__approve_all__with_loader_and_saver():
     approve_all(failed_comparison_loader, mover)
 
     assert moves == failed_comparison_loader()
+
+
+def test__approve_all_even_when_move_fails():
+    def failed_comparison_loader():
+        return [
+            "a.received.txt -> a.approved.txt",
+            "b.received.txt -> b.approved.txt",
+        ]
+
+    moves = []
+
+    def mover(a, b):
+        nonlocal moves
+        if (a == "a.received.txt"):
+            raise Exception("Failed to move file")
+        moves.append(f"{a} -> {b}")
+
+    approve_all(failed_comparison_loader, mover)
+
+    assert moves == failed_comparison_loader()
