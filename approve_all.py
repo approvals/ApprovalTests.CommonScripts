@@ -1,12 +1,12 @@
 import pathlib
-from typing import Callable
+from typing import Callable, List
 
 SCRIPT_DIR = pathlib.Path(__file__).parent
 
 APPROVAL_TESTS_TEMP_DIRECTORY: str = ".approval_tests_temp"
 
 
-def load_failed_comparisons() -> list[str]:
+def load_failed_comparisons() -> List[str]:
     return (SCRIPT_DIR / ".failed_comparison.log").read_text().splitlines()
 
 
@@ -15,7 +15,7 @@ def move(a: str, b: str) -> None:
 
 
 def approve_all(
-    failed_comparison_loader: Callable[[], list[str]] = load_failed_comparisons,
+    failed_comparison_loader: Callable[[], List[str]] = load_failed_comparisons,
     mover: Callable[[str, str], None] = move,
 ) -> None:
     for line in failed_comparison_loader():
