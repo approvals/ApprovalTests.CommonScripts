@@ -26,9 +26,9 @@ def approve_all(
         from_, to = line.split(" -> ") # rename these
         try:
             mover(from_, to)
-            successes.append(to)
+            successes.append(pathlib.Path(to).name)
         except Exception as e:
-            failures.append((to, str(e)))
+            failures.append((pathlib.Path(to).name, str(e)))
     report(failed_comparisons, failures, successes, system_out)
 
 

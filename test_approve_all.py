@@ -44,47 +44,18 @@ def render_template(root_dir, template_path):
     log_path.write_text(content)
 
 
-def test__approve_all__with_loader_and_saver():
-    def failed_comparison_loader():
-        return [
-            "a.received.txt -> a.approved.txt",
-            "b.received.txt -> b.approved.txt",
-        ]
-
-    moves = []
-
-    def mover(a, b):
-        nonlocal moves
-        moves.append(f"{a} -> {b}")
-
-    approve_all(failed_comparison_loader, mover)
-
-    assert moves == failed_comparison_loader()
-
-
-def test__approve_all_even_when_move_fails():
-    def failed_comparison_loader():
-        return [
-            "a.received.txt -> a.approved.txt",
-            "b.received.txt -> b.approved.txt",
-        ]
-    moves = []
-    def mover(a, b):
-        nonlocal moves
-        if (a == "a.received.txt"):
-            raise Exception("Failed to move file")
-        moves.append(f"{a} -> {b}")
-
-    approve_all(failed_comparison_loader, mover)
-
-    assert moves == failed_comparison_loader()[1:]
 
 
 def test__console_output():
     verify_approve_all([
         "a.received.txt -> a.approved.txt",
-        "b.received.txt -> b.approved.txt",
-        "bad.received.txt -> bad.approved.txt",
+        "b.received.txt -> /text/b.approved.txt",
+        "bad.received.txt -> \\text\\bad.approved.txt",
+    ])
+
+def test__one_case():
+    verify_approve_all([
+        "a.received.txt -> a.approved.txt",
     ])
 
 def test__zero_case():
