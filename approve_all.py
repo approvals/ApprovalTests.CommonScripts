@@ -20,7 +20,11 @@ def approve_all(
 ) -> None:
     for line in failed_comparison_loader():
         a, b = line.split(" -> ")
-        mover(a, b)
+        try:
+            mover(a, b)
+        except:
+            pass
+
 
 
 if __name__ == "__main__":

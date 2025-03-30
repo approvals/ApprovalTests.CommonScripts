@@ -68,9 +68,7 @@ def test__approve_all_even_when_move_fails():
             "a.received.txt -> a.approved.txt",
             "b.received.txt -> b.approved.txt",
         ]
-
     moves = []
-
     def mover(a, b):
         nonlocal moves
         if (a == "a.received.txt"):
@@ -79,4 +77,4 @@ def test__approve_all_even_when_move_fails():
 
     approve_all(failed_comparison_loader, mover)
 
-    assert moves == failed_comparison_loader()
+    assert moves == failed_comparison_loader()[1:]
