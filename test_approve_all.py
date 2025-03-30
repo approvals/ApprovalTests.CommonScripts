@@ -87,6 +87,8 @@ def test__console_output():
         "bad.received.txt -> bad.approved.txt",
     ])
 
+def test__zero_case():
+    verify_approve_all([])
 
 def verify_approve_all(files):
     def failed_comparison_loader():
@@ -105,19 +107,3 @@ def verify_approve_all(files):
     approve_all(failed_comparison_loader, mover, system_out)
     verify(result)
 
-
-def test__zero_case():
-    def failed_comparison_loader():
-        return [
-        ]
-    result = ""
-
-    def system_out(text):
-        nonlocal result
-        result += text + "\n"
-    def mover(from_, to):
-        pass
-
-    approve_all(failed_comparison_loader, mover, system_out)
-
-    verify(result)
