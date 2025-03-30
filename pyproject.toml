@@ -8,3 +8,6 @@ dev = [
     "pytest",
     "approvaltests"
 ]
+
+[tool.ruff.format]
+line-ending = "lf"
