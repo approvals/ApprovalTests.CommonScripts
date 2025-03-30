@@ -17,13 +17,13 @@ def move(a: str, b: str) -> None:
 def approve_all(
     failed_comparison_loader: Callable[[], List[str]] = load_failed_comparisons,
     mover: Callable[[str, str], None] = move,
-    system_out: Callable[[str], None] = print
+    system_out: Callable[[str], None] = print,
 ) -> None:
     failures = []
     successes = []
     failed_comparisons = failed_comparison_loader()
     for line in failed_comparisons:
-        from_, to = line.split(" -> ") # rename these
+        from_, to = line.split(" -> ")  # rename these
         try:
             mover(from_, to)
             successes.append(pathlib.Path(to))
@@ -39,7 +39,7 @@ def report(failed_comparisons, failures, successes, system_out):
         system_out("No mismatched files found.")
 
     else:
-        system_out(f"Mismatched files found.")
+        system_out("Mismatched files found.")
     if len(successes):
         system_out("Updating:")
         for approved_file in successes:
@@ -51,7 +51,7 @@ def report(failed_comparisons, failures, successes, system_out):
             system_out(f"    Reason: {reason}")
     system_out("")
     if len(successes) == 1:
-        system_out(f"Approved 1 file.")
+        system_out("Approved 1 file.")
     else:
         system_out(f"Approved {len(successes)} files.")
 
