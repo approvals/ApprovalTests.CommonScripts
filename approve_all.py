@@ -22,9 +22,8 @@ def approve_all(
         a, b = line.split(" -> ")
         try:
             mover(a, b)
-        except Exception :
+        except Exception:
             pass
-
 
 
 if __name__ == "__main__":

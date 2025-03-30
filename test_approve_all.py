@@ -68,10 +68,12 @@ def test__approve_all_even_when_move_fails():
             "a.received.txt -> a.approved.txt",
             "b.received.txt -> b.approved.txt",
         ]
+
     moves = []
+
     def mover(a, b):
         nonlocal moves
-        if (a == "a.received.txt"):
+        if a == "a.received.txt":
             raise Exception("Failed to move file")
         moves.append(f"{a} -> {b}")
 
