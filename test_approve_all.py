@@ -8,6 +8,7 @@ import shutil
 from approve_all import approve_all
 from approvaltests import verify
 
+
 def execute_the_script(script: pathlib.Path):
     subprocess.run(
         [sys.executable, script],
@@ -44,22 +45,27 @@ def render_template(root_dir, template_path):
     log_path.write_text(content)
 
 
-
-
 def test__console_output():
-    verify_approve_all([
-        "a.received.txt -> a.approved.txt",
-        "b.received.txt -> /text/b.approved.txt",
-        "bad.received.txt -> \\text\\bad.approved.txt",
-    ])
+    verify_approve_all(
+        [
+            "a.received.txt -> a.approved.txt",
+            "b.received.txt -> /text/b.approved.txt",
+            "bad.received.txt -> \\text\\bad.approved.txt",
+        ]
+    )
+
 
 def test__one_case():
-    verify_approve_all([
-        "a.received.txt -> a.approved.txt",
-    ])
+    verify_approve_all(
+        [
+            "a.received.txt -> a.approved.txt",
+        ]
+    )
+
 
 def test__zero_case():
     verify_approve_all([])
+
 
 def verify_approve_all(files):
     def failed_comparison_loader():
@@ -77,4 +83,3 @@ def verify_approve_all(files):
 
     approve_all(failed_comparison_loader, mover, system_out)
     verify(result)
-
