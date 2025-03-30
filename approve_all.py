@@ -26,9 +26,9 @@ def approve_all(
         from_, to = line.split(" -> ") # rename these
         try:
             mover(from_, to)
-            successes.append(pathlib.Path(to).name)
+            successes.append(pathlib.Path(to))
         except Exception as e:
-            failures.append((pathlib.Path(to).name, str(e)))
+            failures.append((pathlib.Path(to), str(e)))
     report(failed_comparisons, failures, successes, system_out)
 
 
@@ -43,11 +43,11 @@ def report(failed_comparisons, failures, successes, system_out):
     if len(successes):
         system_out("Updating:")
         for approved_file in successes:
-            system_out(f"  - {approved_file}")
+            system_out(f"  - {approved_file.name}")
     if len(failures):
         system_out("Failed to update:")
         for approved_file, reason in failures:
-            system_out(f"  - {approved_file}")
+            system_out(f"  - {approved_file.name}")
             system_out(f"    Reason: {reason}")
     system_out("")
     if len(successes) == 1:
