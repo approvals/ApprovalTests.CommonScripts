@@ -21,17 +21,17 @@ def approve_all(
 ) -> None:
     failures = []
     successes = []
-    applesauce = failed_comparison_loader()
-    for line in applesauce:
+    failed_comparisons = failed_comparison_loader()
+    for line in failed_comparisons:
         from_, to = line.split(" -> ") # rename these
         try:
             mover(from_, to)
             successes.append(to)
         except Exception as e:
             failures.append((to, str(e)))
-    if len(applesauce) == 1:
+    if len(failed_comparisons) == 1:
         system_out("Mismatched file found.")
-    elif len(applesauce) == 0:
+    elif len(failed_comparisons) == 0:
       system_out("No mismatched files found.")
 
     else:
