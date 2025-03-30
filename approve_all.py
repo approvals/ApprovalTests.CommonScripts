@@ -22,7 +22,7 @@ def approve_all(
         a, b = line.split(" -> ")
         try:
             mover(a, b)
-        except:
+        except Exception :
             pass
 
 
