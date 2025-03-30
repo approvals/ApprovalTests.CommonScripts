@@ -1,0 +1,9 @@
+Mismatched files found.
+Updating:
+  - a.approved.txt
+  - b.approved.txt
+Failed to update:
+  - bad.approved.txt
+    Reason: Failed to move file
+
+Approved 2 files.

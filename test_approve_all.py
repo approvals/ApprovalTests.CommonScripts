@@ -6,7 +6,7 @@ import tempfile
 import shutil
 
 from approve_all import approve_all
-
+from approvaltests import verify
 
 def execute_the_script(script: pathlib.Path):
     subprocess.run(
@@ -78,3 +78,40 @@ def test__approve_all_even_when_move_fails():
     approve_all(failed_comparison_loader, mover)
 
     assert moves == failed_comparison_loader()[1:]
+
+
+def test__console_output():
+    files = [
+        "a.received.txt -> a.approved.txt",
+        "b.received.txt -> b.approved.txt",
+        "bad.received.txt -> bad.approved.txt",
+    ]
+    def failed_comparison_loader():
+        return files
+    result = ""
+    def system_out(text):
+        nonlocal result
+        result += text + "\n"
+    def mover(from_, to):
+        if "bad" in from_:
+            raise Exception("Failed to move file")
+
+    approve_all(failed_comparison_loader, mover, system_out)
+
+    verify(result)
+
+def test__zero_case():
+    def failed_comparison_loader():
+        return [
+        ]
+    result = ""
+
+    def system_out(text):
+        nonlocal result
+        result += text + "\n"
+    def mover(from_, to):
+        pass
+
+    approve_all(failed_comparison_loader, mover, system_out)
+
+    verify(result)

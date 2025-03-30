@@ -17,14 +17,39 @@ def move(a: str, b: str) -> None:
 def approve_all(
     failed_comparison_loader: Callable[[], List[str]] = load_failed_comparisons,
     mover: Callable[[str, str], None] = move,
+    system_out: Callable[[str], None] = print
 ) -> None:
-    for line in failed_comparison_loader():
-        a, b = line.split(" -> ")
+    failures = []
+    successes = []
+    applesauce = failed_comparison_loader()
+    for line in applesauce:
+        a, approved_file = line.split(" -> ") # rename these
         try:
-            mover(a, b)
-        except Exception :
-            pass
+            mover(a, approved_file)
+            successes.append(approved_file)
+        except Exception as e:
+            failures.append((approved_file, str(e)))
+    if len(applesauce) == 1:
+        system_out("Mismatched file found.")
+    elif len(applesauce) == 0:
+      system_out("No mismatched files found.")
 
+    else:
+        system_out(f"Mismatched files found.")
+    if len(successes):
+        system_out("Updating:")
+        for approved_file in successes:
+            system_out(f"  - {approved_file}")
+    if len(failures):
+        system_out("Failed to update:")
+        for approved_file, reason in failures:
+            system_out(f"  - {approved_file}")
+            system_out(f"    Reason: {reason}")
+    system_out("")
+    if len(successes) == 1:
+        system_out(f"Approved 1 file.")
+    else:
+        system_out(f"Approved {len(successes)} files.")
 
 
 if __name__ == "__main__":
