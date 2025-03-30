@@ -81,24 +81,30 @@ def test__approve_all_even_when_move_fails():
 
 
 def test__console_output():
-    files = [
+    verify_approve_all([
         "a.received.txt -> a.approved.txt",
         "b.received.txt -> b.approved.txt",
         "bad.received.txt -> bad.approved.txt",
-    ]
+    ])
+
+
+def verify_approve_all(files):
     def failed_comparison_loader():
         return files
+
     result = ""
+
     def system_out(text):
         nonlocal result
         result += text + "\n"
+
     def mover(from_, to):
         if "bad" in from_:
             raise Exception("Failed to move file")
 
     approve_all(failed_comparison_loader, mover, system_out)
-
     verify(result)
+
 
 def test__zero_case():
     def failed_comparison_loader():
