@@ -10,18 +10,14 @@ from approve_all import approve_all
 
 def execute_the_script(script: pathlib.Path):
     subprocess.run(
-        [
-            sys.executable,
-            script
-        ],
+        [sys.executable, script],
         text=True,
         check=True,
     )
 
 
 def test__end_to_end_test():
-
-    script =".approval_tests_temp/approve_all.py"
+    script = ".approval_tests_temp/approve_all.py"
     with tempfile.TemporaryDirectory(prefix="ApprovalTests.CommonScripts-") as _sandbox:
         sandbox = copy_template_dir(_sandbox, script)
 
@@ -29,7 +25,6 @@ def test__end_to_end_test():
         execute_the_script(sandbox / script)
         approved_text = (sandbox / "a.approved.txt").read_text()
         assert received_text == approved_text
-
 
 
 def copy_template_dir(_sandbox, script):
