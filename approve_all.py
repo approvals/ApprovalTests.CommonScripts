@@ -29,10 +29,14 @@ def approve_all(
             successes.append(to)
         except Exception as e:
             failures.append((to, str(e)))
+    report(failed_comparisons, failures, successes, system_out)
+
+
+def report(failed_comparisons, failures, successes, system_out):
     if len(failed_comparisons) == 1:
         system_out("Mismatched file found.")
     elif len(failed_comparisons) == 0:
-      system_out("No mismatched files found.")
+        system_out("No mismatched files found.")
 
     else:
         system_out(f"Mismatched files found.")
