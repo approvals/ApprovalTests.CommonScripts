@@ -23,12 +23,12 @@ def approve_all(
     successes = []
     applesauce = failed_comparison_loader()
     for line in applesauce:
-        a, approved_file = line.split(" -> ") # rename these
+        from_, to = line.split(" -> ") # rename these
         try:
-            mover(a, approved_file)
-            successes.append(approved_file)
+            mover(from_, to)
+            successes.append(to)
         except Exception as e:
-            failures.append((approved_file, str(e)))
+            failures.append((to, str(e)))
     if len(applesauce) == 1:
         system_out("Mismatched file found.")
     elif len(applesauce) == 0:
