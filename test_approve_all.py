@@ -50,7 +50,7 @@ def test__console_output():
     verify_approve_all([
         "a.received.txt -> a.approved.txt",
         "b.received.txt -> /text/b.approved.txt",
-        "bad.received.txt -> \\text\\bad.approved.txt",
+        "bad.received.txt -> /text/bad.approved.txt",
     ])
 
 def test__one_case():
