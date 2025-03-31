@@ -12,9 +12,6 @@ from typing import Callable, List
 
 SCRIPT_DIR = pathlib.Path(__file__).parent
 
-APPROVAL_TESTS_TEMP_DIRECTORY: str = ".approval_tests_temp"
-
-
 def load_failed_comparisons() -> List[str]:
     return (SCRIPT_DIR / ".failed_comparison.log").read_text().splitlines()
 
