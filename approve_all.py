@@ -1,3 +1,12 @@
+#! /usr/bin/env python3
+
+##########
+# to run:
+#   python approve_all.py
+# more at:
+#   https://github.com/approvals/ApprovalTests.CommonScripts/blob/main/docs/how_to/run.md
+##########
+
 import pathlib
 from typing import Callable, List
 
