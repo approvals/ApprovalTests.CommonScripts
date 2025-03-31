@@ -1,6 +1,12 @@
 # How to Run
 
-toc
+<!-- toc -->
+## Contents
+
+  * [Mac and Linux](#mac-and-linux)
+  * [Windows](#windows)
+    * [Get Python](#get-python)
+    * [Running](#running)<!-- endToc -->
 
 ## Mac and Linux
 
