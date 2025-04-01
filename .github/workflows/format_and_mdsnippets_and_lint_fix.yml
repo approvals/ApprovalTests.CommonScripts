@@ -1,4 +1,4 @@
-name: Ruff
+name: Format and MDSnippets and Lint Fix
 on:
   push:
   workflow_dispatch:
