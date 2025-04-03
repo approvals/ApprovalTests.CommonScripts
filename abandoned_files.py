@@ -62,3 +62,6 @@ def report_dry_run(system_out, stray_files):
 def report_final_status(system_out, stray_files):
     system_out("")
     system_out(f"Deleted {len(stray_files)} files.")
+
+if __name__ == "__main":
+    remove_abandoned_files(mode=Mode.PROMPT)
