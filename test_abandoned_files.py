@@ -14,7 +14,7 @@ def test__find_abandoned_files__with_loader_and_saver():
 
     def delete(file):
         nonlocal deletes
-        deletes.append(file)
+        deletes.append(file.name)
 
     remove_abandoned_files(
         mode=Mode.DELETE_WITHOUT_PROMPTING,
