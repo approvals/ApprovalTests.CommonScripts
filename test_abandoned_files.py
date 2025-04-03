@@ -1,6 +1,6 @@
 from abandoned_files import remove_abandoned_files, Mode
 from approvaltests import verify, Options
-from approvaltests.reporters import ReportWithBeyondCompare, GenericDiffReporter, GenericDiffReporterConfig
+from approvaltests.reporters import GenericDiffReporter, GenericDiffReporterConfig
 
 
 def test__find_abandoned_files__with_loader_and_saver():
@@ -25,10 +25,16 @@ def test__find_abandoned_files__with_loader_and_saver():
 
     assert deletes == ["a.approved.txt"]
 
+
 def test__console_output():
     verify_abandoned_files(
-        ["path/to/a.stray.approved.txt", "b.approved.txt", "path/to2/c.stray.approved.txt"]
+        [
+            "path/to/a.stray.approved.txt",
+            "b.approved.txt",
+            "path/to2/c.stray.approved.txt",
+        ]
     )
+
 
 def verify_abandoned_files(files):
     def load_touched_files():
@@ -41,10 +47,10 @@ def verify_abandoned_files(files):
         pass
 
     result = ""
+
     def system_out(text):
         nonlocal result
         result += text + "\n"
-
 
     remove_abandoned_files(
         mode=Mode.DELETE_WITHOUT_PROMPTING,
