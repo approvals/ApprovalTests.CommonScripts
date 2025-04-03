@@ -57,7 +57,7 @@ def test__console_output():
 
 def test__one_case():
     verify_approve_all(
-        [
+        files = [
             "a.received.txt -> a.approved.txt",
         ]
     )
