@@ -1,10 +1,9 @@
 TODO:
-- [ ] if curl is not installed, use wget
-- [ ] write an ADR
-- [x] record the UX design
-- [ ] how do we publish?
+
 - [ ] --dry-run / -n flag
-- [ ] break in to unit tests / use loader
+- [ ] make approve all self runnable
+- [ ] implement: find abandond files
+
 
 instructions given to user:
 """
