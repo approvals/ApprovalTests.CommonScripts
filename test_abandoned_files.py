@@ -34,9 +34,18 @@ def test__console_output():
             "path/to2/c.stray.approved.txt",
         ]
     )
+def test__reject():
+    verify_abandoned_files(
+        [
+            "path/to/a.stray.approved.txt",
+            "b.approved.txt",
+            "path/to2/c.stray.approved.txt",
+        ], Mode.PROMPT,
+        lambda: "n"  # Simulate user input
+    )
 
 
-def verify_abandoned_files(files):
+def verify_abandoned_files(files, mode=Mode.DELETE_WITHOUT_PROMPTING,get_input=None):
     def load_touched_files():
         return [file for file in files if "stray" not in file]
 
@@ -46,18 +55,24 @@ def verify_abandoned_files(files):
     def delete(file):
         pass
 
-    result = ""
+    console_output = ""
 
     def system_out(text):
-        nonlocal result
-        result += text + "\n"
+        nonlocal console_output
+        console_output += text + "\n"
+
+    def get_and_print_input():
+        input = get_input()
+        system_out(input)
+        return input
 
     remove_abandoned_files(
-        mode=Mode.DELETE_WITHOUT_PROMPTING,
+        mode=mode,
         load_touched_files=load_touched_files,
         get_all_approved_files=get_all_approved_files,
         delete=delete,
         system_out=system_out,
+        get_input=get_and_print_input
     )
 
     class ReportWithBeyondCompare5Windows(GenericDiffReporter):
@@ -69,4 +84,7 @@ def verify_abandoned_files(files):
                 )
             )
 
-    verify(result, options=Options().with_reporter(ReportWithBeyondCompare5Windows()))
+    verify(
+        console_output,
+        # options=Options().with_reporter(ReportWithBeyondCompare5Windows())
+    )

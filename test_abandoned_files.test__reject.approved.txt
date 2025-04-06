@@ -1,0 +1,7 @@
+Unused `.approved.` files found.
+
+ - a.stray.approved.txt (in path/to/)
+ - c.stray.approved.txt (in path/to2/)
+Delete? [Y/n]
+n
+No files were deleted.
