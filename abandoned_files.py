@@ -30,7 +30,7 @@ def remove_abandoned_files(
     get_all_approved_files: Callable[[], List[str]] = get_all_approved_files,
     delete: Callable[[Path], None] = delete_file,
     system_out: Callable[[str], None] = print,
-    get_input:Callable[[],str]=input
+    get_input: Callable[[], str] = input,
 ):
     touched_files = load_touched_files()
     all_approved_files = get_all_approved_files()
@@ -48,8 +48,7 @@ def remove_abandoned_files(
         system_out("No files were deleted.")
 
 
-
-def should_delete(mode: Mode, system_out, get_input:Callable[[],str]=input) -> bool:
+def should_delete(mode: Mode, system_out, get_input: Callable[[], str] = input) -> bool:
     if mode == Mode.PROMPT:
         system_out("Delete? [Y/n]")
         response = get_input()

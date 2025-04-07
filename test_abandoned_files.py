@@ -1,6 +1,5 @@
 from abandoned_files import remove_abandoned_files, Mode
-from approvaltests import verify, Options
-from approvaltests.reporters import GenericDiffReporter, GenericDiffReporterConfig
+from approvaltests import verify
 
 
 def test__find_abandoned_files__with_loader_and_saver():
@@ -34,18 +33,21 @@ def test__console_output():
             "path/to2/c.stray.approved.txt",
         ]
     )
+
+
 def test__reject():
     verify_abandoned_files(
         [
             "path/to/a.stray.approved.txt",
             "b.approved.txt",
             "path/to2/c.stray.approved.txt",
-        ], Mode.PROMPT,
-        lambda: "n"  # Simulate user input
+        ],
+        Mode.PROMPT,
+        lambda: "n",  # Simulate user input
     )
 
 
-def verify_abandoned_files(files, mode=Mode.DELETE_WITHOUT_PROMPTING,get_input=None):
+def verify_abandoned_files(files, mode=Mode.DELETE_WITHOUT_PROMPTING, get_input=None):
     def load_touched_files():
         return [file for file in files if "stray" not in file]
 
@@ -72,9 +74,8 @@ def verify_abandoned_files(files, mode=Mode.DELETE_WITHOUT_PROMPTING,get_input=N
         get_all_approved_files=get_all_approved_files,
         delete=delete,
         system_out=system_out,
-        get_input=get_and_print_input
+        get_input=get_and_print_input,
     )
-
 
     verify(
         console_output,
