@@ -1,1 +1,1 @@
-@call ensure_uv_installed.cmd && call "%USERPROFILE%\.local\bin\uv" run -- python -m pytest . -v
+@call python -m pytest . -v

@@ -1,4 +1,5 @@
 #! /bin/bash
 set -euo pipefail
 
-./ensure_uv_installed.sh && "$HOME/.local/bin/uv" run -- python -m pytest . -v
+python --version
+python -m pytest . -v
