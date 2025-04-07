@@ -46,6 +46,15 @@ def test__reject():
         lambda: "n",  # Simulate user input
     )
 
+def test__no_abandoned_files():
+    verify_abandoned_files(
+        [
+            "b.approved.txt",
+        ],
+        Mode.PROMPT,
+        None,
+    )
+
 
 def verify_abandoned_files(files, mode=Mode.DELETE_WITHOUT_PROMPTING, get_input=None):
     def load_touched_files():

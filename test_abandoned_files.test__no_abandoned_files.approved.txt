@@ -1,0 +1,3 @@
+No unused `.approved.` files found.
+
+No files were deleted.

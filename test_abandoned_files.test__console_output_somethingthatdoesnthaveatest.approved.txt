@@ -1,6 +1,0 @@
-Unused `.approved.` files found.
-
- - a.stray.approved.txt (in path/to/)
- - c.stray.approved.txt (in path/to2/)
-
-Deleted 2 files.

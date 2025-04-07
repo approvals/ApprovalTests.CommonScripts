@@ -40,7 +40,7 @@ def remove_abandoned_files(
     ]
     report_dry_run(system_out, stray_files)
 
-    if should_delete(mode, system_out, get_input):
+    if len(stray_files) and should_delete(mode, system_out, get_input):
         for stray_file in stray_files:
             delete(stray_file)
         report_final_status(system_out, stray_files)
@@ -62,6 +62,10 @@ def should_delete(mode: Mode, system_out, get_input: Callable[[], str] = input) 
 
 
 def report_dry_run(system_out, stray_files):
+    if not len(stray_files):
+        system_out("No unused `.approved.` files found.\n")
+        return
+
     system_out("Unused `.approved.` files found.\n")
 
     for stray_file in stray_files:
