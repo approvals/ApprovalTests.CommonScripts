@@ -1,7 +1,6 @@
 [project]
 name = "ApprovalTests.CommonScripts"
 version = "0.0.0"
-requires-python = "==3.13.2"
 
 [tool.ruff.format]
 line-ending = "lf"
