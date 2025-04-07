@@ -1,4 +1,4 @@
-from abandoned_files import remove_abandoned_files, Mode
+from remove_abandoned_files import remove_abandoned_files, Mode
 from approvaltests import verify
 
 
