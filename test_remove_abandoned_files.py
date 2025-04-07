@@ -46,6 +46,7 @@ def test__reject():
         lambda: "n",  # Simulate user input
     )
 
+
 def test__no_abandoned_files():
     verify_abandoned_files(
         [
