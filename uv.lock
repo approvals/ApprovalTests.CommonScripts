@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = "==3.13.2"
 
 [[package]]
@@ -12,16 +13,16 @@ wheels = [
 
 [[package]]
 name = "approval-utilities"
-version = "14.3.1"
+version = "14.4.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/ce/4f/960b6cd346c167173011a7bdc303000ddd99464e6425d4cf41fd20106c6a/approval_utilities-14.3.1.tar.gz", hash = "sha256:72bf8a6b4735db0d12078668328e38eee68b84753875acdd8dc032cfcdcaf409", size = 33879 }
+sdist = { url = "https://files.pythonhosted.org/packages/dc/b0/36860b0f8edbb48e85e643ca9c34e40af318e33165c5f17b3dc3ba4ebde2/approval_utilities-14.4.0.tar.gz", hash = "sha256:9437db2dbdc3dcfaa80ca1c4aea46169b269b4b6854f1971bdcf52f2531373fc", size = 33908 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/77/bd/1fcd8d94b917412d71921240ee822df68fda4b0a2f8dc2f706639dcfc19d/approval_utilities-14.3.1-py3-none-any.whl", hash = "sha256:2052a40b0262af65cb9a8950155f23b6f960f64fabc4f44c38d2c22d8cb59b5d", size = 19094 },
+    { url = "https://files.pythonhosted.org/packages/8c/1e/b3d517cac361940cc96bef582eecfef33548110827a49287d904f42142ff/approval_utilities-14.4.0-py3-none-any.whl", hash = "sha256:39ff2cbec81cac74d8da66ad8a853aeb09977085026ab6db76e8687efa9ed282", size = 19125 },
 ]
 
 [[package]]
 name = "approvaltests"
-version = "14.3.1"
+version = "14.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "allpairspy" },
@@ -35,9 +36,9 @@ dependencies = [
     { name = "testfixtures" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/32/55/ad3671bf5a01df14887f9d38289a6b7ec784d7955db90e9035aa34fd5839/approvaltests-14.3.1.tar.gz", hash = "sha256:8eedfecb5f68651e3e6ea8b8c1124ece0bd4c14d3308d73616a65deeee0c793d", size = 60317 }
+sdist = { url = "https://files.pythonhosted.org/packages/41/c5/7aadfc329cf81c53b4d2d46a53aedacdc89aea2e93db5b1e593d422cb897/approvaltests-14.4.0.tar.gz", hash = "sha256:76c329b4660d698648f6a738ef2da2b8c61b291691e75e231dcc57646a73bf57", size = 60415 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/68/bd/5c0486b782b0c6191b8af7746626627b22fd622d0ff3d00a1a8b6f253a05/approvaltests-14.3.1-py3-none-any.whl", hash = "sha256:519c7dae64a40a6f3c48846c6b21d34f26543724411d1422d2418bb776b4067f", size = 76685 },
+    { url = "https://files.pythonhosted.org/packages/60/7d/8e03869a4dd08ad9f4fad716b59b931c2b022cd72818bf60c3492e447019/approvaltests-14.4.0-py3-none-any.whl", hash = "sha256:7d1de11559f1f72464842a22efc655206059a8ba0ca6faa3f0aef481d40aae6b", size = 76751 },
 ]
 
 [[package]]
@@ -135,11 +136,11 @@ wheels = [
 
 [[package]]
 name = "iniconfig"
-version = "2.0.0"
+version = "2.1.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d7/4b/cbd8e699e64a6f16ca3a8220661b5f83792b3017d0f79807cb8708d33913/iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3", size = 4646 }
+sdist = { url = "https://files.pythonhosted.org/packages/f2/97/ebf4da567aa6827c909642694d71c9fcf53e5b504f2d96afea02718862f3/iniconfig-2.1.0.tar.gz", hash = "sha256:3abbd2e30b36733fee78f9c7f7308f2d0050e88f0087fd25c2645f63c773e1c7", size = 4793 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ef/a6/62565a6e1cf69e10f5727360368e451d4b7f58beeac6173dc9db836a5b46/iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374", size = 5892 },
+    { url = "https://files.pythonhosted.org/packages/2c/e1/e6716421ea10d38022b952c159d5161ca1193197fb744506875fbb87ea7b/iniconfig-2.1.0-py3-none-any.whl", hash = "sha256:9deba5723312380e77435581c6bf4935c94cbfab9b1ed33ef8d238ea168eb760", size = 6050 },
 ]
 
 [[package]]
@@ -189,7 +190,7 @@ sdist = { url = "https://files.pythonhosted.org/packages/30/23/2f0a3efc4d6a32f3b
 
 [[package]]
 name = "pytest"
-version = "8.3.4"
+version = "8.3.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
@@ -197,9 +198,9 @@ dependencies = [
     { name = "packaging" },
     { name = "pluggy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/05/35/30e0d83068951d90a01852cb1cef56e5d8a09d20c7f511634cc2f7e0372a/pytest-8.3.4.tar.gz", hash = "sha256:965370d062bce11e73868e0335abac31b4d3de0e82f4007408d242b4f8610761", size = 1445919 }
+sdist = { url = "https://files.pythonhosted.org/packages/ae/3c/c9d525a414d506893f0cd8a8d0de7706446213181570cdbd766691164e40/pytest-8.3.5.tar.gz", hash = "sha256:f4efe70cc14e511565ac476b57c279e12a855b11f48f212af1080ef2263d3845", size = 1450891 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/11/92/76a1c94d3afee238333bc0a42b82935dd8f9cf8ce9e336ff87ee14d9e1cf/pytest-8.3.4-py3-none-any.whl", hash = "sha256:50e16d954148559c9a74109af1eaf0c945ba2d8f30f0a3d3335edde19788b6f6", size = 343083 },
+    { url = "https://files.pythonhosted.org/packages/30/3d/64ad57c803f1fa1e963a7946b6e0fea4a70df53c1a7fed304586539c2bac/pytest-8.3.5-py3-none-any.whl", hash = "sha256:c69214aa47deac29fad6c2a4f590b9c4a9fdb16a403176fe154b79c0b4d4d820", size = 343634 },
 ]
 
 [[package]]
@@ -254,11 +255,11 @@ wheels = [
 
 [[package]]
 name = "typing-extensions"
-version = "4.13.0"
+version = "4.13.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/0e/3e/b00a62db91a83fff600de219b6ea9908e6918664899a2d85db222f4fbf19/typing_extensions-4.13.0.tar.gz", hash = "sha256:0a4ac55a5820789d87e297727d229866c9650f6521b64206413c4fbada24d95b", size = 106520 }
+sdist = { url = "https://files.pythonhosted.org/packages/76/ad/cd3e3465232ec2416ae9b983f27b9e94dc8171d56ac99b345319a9475967/typing_extensions-4.13.1.tar.gz", hash = "sha256:98795af00fb9640edec5b8e31fc647597b4691f099ad75f469a2616be1a76dff", size = 106633 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e0/86/39b65d676ec5732de17b7e3c476e45bb80ec64eb50737a8dce1a4178aba1/typing_extensions-4.13.0-py3-none-any.whl", hash = "sha256:c8dd92cc0d6425a97c18fbb9d1954e5ff92c1ca881a309c45f06ebc0b79058e5", size = 45683 },
+    { url = "https://files.pythonhosted.org/packages/df/c5/e7a0b0f5ed69f94c8ab7379c599e6036886bffcde609969a5325f47f1332/typing_extensions-4.13.1-py3-none-any.whl", hash = "sha256:4b6cf02909eb5495cfbc3f6e8fd49217e6cc7944e145cdda8caa3734777f9e69", size = 45739 },
 ]
 
 [[package]]
