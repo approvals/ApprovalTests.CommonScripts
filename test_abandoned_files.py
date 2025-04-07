@@ -75,16 +75,7 @@ def verify_abandoned_files(files, mode=Mode.DELETE_WITHOUT_PROMPTING,get_input=N
         get_input=get_and_print_input
     )
 
-    class ReportWithBeyondCompare5Windows(GenericDiffReporter):
-        def __init__(self):
-            super().__init__(
-                config=GenericDiffReporterConfig(
-                    name=self.__class__.__name__,
-                    path="{ProgramFiles}/Beyond Compare 5/BCompare.exe",
-                )
-            )
 
     verify(
         console_output,
-        # options=Options().with_reporter(ReportWithBeyondCompare5Windows())
     )
