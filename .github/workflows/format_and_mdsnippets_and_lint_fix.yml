@@ -7,14 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Lint Fix
+    - name: Format and Lint Fix
       run: |
-        python -m pip install ruff
-        python -m ruff check --fix
-    - name: Format
-      run: |
-        python -m pip install ruff
-        python -m ruff format
+        ./format_code.sh
     - name: Update MarkdownSnippets
       run: |
         dotnet tool install --global MarkdownSnippets.Tool
