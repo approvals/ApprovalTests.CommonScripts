@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build and test
         run: |
-          ./build-and-test
+          ./build_and_test
       # ensure semaphore file was created
       - run: cat semaphore || exit 1
   shellcheck:
