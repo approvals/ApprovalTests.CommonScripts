@@ -2,7 +2,7 @@
 
 ##########
 # to run:
-#   python approve_all.py
+#   python remove_abandoned_files
 # more at:
 #   https://github.com/approvals/ApprovalTests.CommonScripts/blob/main/docs/how_to/run.md
 ##########
