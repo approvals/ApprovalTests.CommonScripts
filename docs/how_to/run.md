@@ -37,7 +37,7 @@ python --version
 If not, install from one of:
 
 - Chocolatey: `choco install python`
-- WinGet: `winget install -e --id Python.Python.3.11`
+- WinGet: `winget install -e --id Python.Python.3.12`
 - Python: [Website](https://www.python.org/downloads/)
 
 ### Running
