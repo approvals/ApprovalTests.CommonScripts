@@ -56,6 +56,29 @@ def test__no_abandoned_files():
         None,
     )
 
+def test__path_normalization():
+    def load_touched_files():
+        return ["path/to/./file.approved.txt"]
+
+    def get_all_approved_files():
+        return ["path/to/file.approved.txt"]
+
+    deletes = []
+
+    def delete(file):
+        nonlocal deletes
+        deletes.append(file.name)
+
+    remove_abandoned_files(
+        mode=Mode.DELETE_WITHOUT_PROMPTING,
+        load_touched_files=load_touched_files,
+        get_all_approved_files=get_all_approved_files,
+        delete=delete,
+    )
+
+    # These paths should be considered equivalent, so no files should be deleted
+    assert deletes == [], "File was incorrectly identified as abandoned"
+
 
 def verify_abandoned_files(files, mode=Mode.DELETE_WITHOUT_PROMPTING, get_input=None):
     def load_touched_files():

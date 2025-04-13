@@ -41,8 +41,8 @@ def remove_abandoned_files(
     system_out: Callable[[str], None] = print,
     get_input: Callable[[], str] = input,
 ):
-    touched_files = load_touched_files()
-    all_approved_files = get_all_approved_files()
+    touched_files = [Path(file).as_posix() for file in load_touched_files()]
+    all_approved_files = [Path(file).as_posix() for file in get_all_approved_files()]
 
     stray_files = [
         Path(file) for file in all_approved_files if file not in touched_files
