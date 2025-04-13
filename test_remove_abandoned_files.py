@@ -56,6 +56,7 @@ def test__no_abandoned_files():
         None,
     )
 
+
 def test__path_normalization():
     def load_touched_files():
         return ["path/to/./file.approved.txt"]
