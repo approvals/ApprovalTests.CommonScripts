@@ -1,3 +1,4 @@
 /semaphore
 __pycache__/
 .idea/
+.venv/
