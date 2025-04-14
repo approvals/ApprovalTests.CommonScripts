@@ -4,7 +4,7 @@ import subprocess
 import sys
 import tempfile
 import shutil
-from typing import List, Callable
+from typing import List
 
 from approve_all import approve_all
 from approvaltests import verify

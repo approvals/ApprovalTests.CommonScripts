@@ -57,7 +57,9 @@ def remove_abandoned_files(
         system_out("No files were deleted.")
 
 
-def should_delete(mode: Mode, system_out: Callable[[str], None], get_input: Callable[[], str] = input) -> bool:
+def should_delete(
+    mode: Mode, system_out: Callable[[str], None], get_input: Callable[[], str] = input
+) -> bool:
     if mode == Mode.PROMPT:
         system_out("Delete? [Y/n]")
         response = get_input()
@@ -81,7 +83,9 @@ def report_dry_run(system_out: Callable[[str], None], stray_files: List[Path]) -
         system_out(f" - {stray_file.name} (in {stray_file.parent.as_posix()}/)")
 
 
-def report_final_status(system_out: Callable[[str], None], stray_files: List[Path]) -> None:
+def report_final_status(
+    system_out: Callable[[str], None], stray_files: List[Path]
+) -> None:
     system_out("")
     system_out(f"Deleted {len(stray_files)} files.")
 

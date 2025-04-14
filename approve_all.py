@@ -39,7 +39,12 @@ def approve_all(
     report(failed_comparisons, failures, successes, system_out)
 
 
-def report(failed_comparisons: List[str], failures: List[Tuple[pathlib.Path, str]], successes: List[pathlib.Path], system_out: Callable[[str], None]) -> None:
+def report(
+    failed_comparisons: List[str],
+    failures: List[Tuple[pathlib.Path, str]],
+    successes: List[pathlib.Path],
+    system_out: Callable[[str], None],
+) -> None:
     if len(failed_comparisons) == 1:
         system_out("Mismatched file found.")
     elif len(failed_comparisons) == 0:

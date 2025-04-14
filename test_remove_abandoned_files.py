@@ -83,7 +83,11 @@ def test__path_normalization() -> None:
     assert deletes == [], "File was incorrectly identified as abandoned"
 
 
-def verify_abandoned_files(files: List[str], mode: Mode = Mode.DELETE_WITHOUT_PROMPTING, get_input: Optional[Callable[[], str]] = input) -> None:
+def verify_abandoned_files(
+    files: List[str],
+    mode: Mode = Mode.DELETE_WITHOUT_PROMPTING,
+    get_input: Optional[Callable[[], str]] = input,
+) -> None:
     def load_touched_files() -> List[str]:
         return [file for file in files if "stray" not in file]
 
@@ -101,7 +105,7 @@ def verify_abandoned_files(files: List[str], mode: Mode = Mode.DELETE_WITHOUT_PR
 
     def get_and_print_input() -> str:
         assert get_input is not None
-        
+
         input = get_input()
         system_out(input)
         return input
