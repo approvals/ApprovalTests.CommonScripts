@@ -37,8 +37,8 @@ def copy_template_dir(_sandbox, script):
     return sandbox
 
 
-def render_template(root_dir, template_path):
-    template_path = root_dir / template_path
+def render_template(root_dir, template_path_):
+    template_path = root_dir / template_path_
     log_path = template_path.with_name(template_path.name.replace(".template", ""))
     content = template_path.read_text()
     content = content.replace("{root}", str(root_dir) + os.sep)
