@@ -98,6 +98,7 @@ def verify_abandoned_files(files, mode=Mode.DELETE_WITHOUT_PROMPTING, get_input=
         console_output += text + "\n"
 
     def get_and_print_input():
+        assert get_input is not None
         input = get_input()
         system_out(input)
         return input
