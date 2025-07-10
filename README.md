@@ -10,7 +10,17 @@ When you make a change that affects a large number of Approval Tests you can qui
 
 ### Example Output
 
-snippet: test_approve_all.test__one_case.approved.txt
+<!-- snippet: test_approve_all.test__one_case.approved.txt -->
+<a id='snippet-test_approve_all.test__one_case.approved.txt'></a>
+```txt
+Mismatched file found.
+Updating:
+  - a.approved.txt
+
+Approved 1 file.
+```
+<sup><a href='/test_approve_all.test__one_case.approved.txt#L1-L5' title='Snippet source file'>snippet source</a> | <a href='#snippet-test_approve_all.test__one_case.approved.txt' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 ## Remove Abandoned Files
 
@@ -21,4 +31,16 @@ Running this will first list all files it believes have been abandoned and then 
 
 ### Example output
 
-snippet: test_remove_abandoned_files.test__reject.approved.txt
+<!-- snippet: test_remove_abandoned_files.test__reject.approved.txt -->
+<a id='snippet-test_remove_abandoned_files.test__reject.approved.txt'></a>
+```txt
+Unused `.approved.` files found.
+
+ - a.stray.approved.txt (in path/to/)
+ - c.stray.approved.txt (in path/to2/)
+Delete? [Y/n]
+n
+No files were deleted.
+```
+<sup><a href='/test_remove_abandoned_files.test__reject.approved.txt#L1-L7' title='Snippet source file'>snippet source</a> | <a href='#snippet-test_remove_abandoned_files.test__reject.approved.txt' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
