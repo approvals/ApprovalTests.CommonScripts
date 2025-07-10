@@ -2,7 +2,13 @@
 
 ![Build and Test](https://github.com/approvals/ApprovalTests.CommonScripts/actions/workflows/build-and-test.yml/badge.svg)
 
-toc 
+<!-- toc -->
+## Contents
+
+  * [Approve All](#approve-all)
+    * [Example Output](#example-output)
+  * [Remove Abandoned Files](#remove-abandoned-files)
+    * [Example output](#example-output-1)<!-- endToc -->
 
 ## Approve All
 
