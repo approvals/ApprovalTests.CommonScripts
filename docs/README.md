@@ -20,6 +20,7 @@
 
 ## Explanations
 
+* [Overview of Scripts](./explanations/overview.md)
 * [Approval Testing Concepts](https://github.com/approvals/ApprovalTests.Documentation/blob/main/explanations/approval_testing.md)
 * [What are Approvals](https://github.com/approvals/ApprovalTests.Documentation/blob/main/explanations/what_are_approvals.md)
 
