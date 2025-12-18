@@ -5,12 +5,9 @@
 <!-- toc -->
 ## Contents
 
-* [Features](#features)
-* [How Tos](#how-tos)
-* [Reference](#reference)
-* [Configuration](#configuration)
-* [Explanations](#explanations)
-* [Main concepts](#main-concepts)<!-- endToc -->
+  * [How Tos](#how-tos)
+  * [Reference](#reference)
+  * [Explanations](#explanations)<!-- endToc -->
 
 ## How Tos
 
