@@ -54,5 +54,6 @@ No files were deleted.
 
 ## See Also
 
+- [Documentaton](docs/README.md) - Documentation
 - [Agents](docs/agents.md) - AI agent instructions and script documentation
 - [Map](docs/map.md) - Codebase structure overview
