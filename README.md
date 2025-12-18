@@ -50,3 +50,8 @@ No files were deleted.
 ```
 <sup><a href='/test_remove_abandoned_files.test__reject.approved.txt#L1-L7' title='Snippet source file'>snippet source</a> | <a href='#snippet-test_remove_abandoned_files.test__reject.approved.txt' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
+
+## See Also
+
+- [Agents](docs/agents.md) - AI agent instructions and script documentation
+- [Map](docs/map.md) - Codebase structure overview
